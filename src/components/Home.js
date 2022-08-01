@@ -1,6 +1,8 @@
-import { click } from "@testing-library/user-event/dist/click";
+
 import { useEffect, useState } from "react";
 import { getList } from "../services/apiCalls";
+import { Parallax } from 'react-parallax';
+import '../styles/homeStyles.css';
 
 
 function Home(){
@@ -21,11 +23,30 @@ function Home(){
     const apodDes = apod.explanation;
 
     return(
-    <>
-        <img src={apodImage} alt="apod Image" />
-        <p>
-            {apodDes}
-        </p>
+    <>  
+        <Parallax
+        bgImage={apodImage}
+        strength={300}
+        style={{
+            height:"100vh"
+        }}
+        >
+        <div style={{ 
+            height: '250px',
+            display: 'flex', 
+            justifyContent: 'center' ,
+            marginTop: '100px',
+            }}>
+            <svg viewBox="0 0 1320 300">
+                <text x="50" y="50%" dy=".35em">
+                    spaceExplorer
+                </text>
+            </svg>
+        </div>
+        </Parallax>
+        <div style={{ height: 500 }}>
+           {apodDes}
+        </div>
     </>
     );
 }
